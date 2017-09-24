@@ -37897,6 +37897,7 @@ $(function() {
       !error && $('#samlResponse').focus();
       error = true;
     }
+    $('#samlResponse').val(btoa(samlResponse));
 
     var sessionDuration = $('#sessionDuration').val().trim();
     if (sessionDuration.length === 0) {
