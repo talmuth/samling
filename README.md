@@ -39,7 +39,7 @@ You'll end up with a `public` directory with all the required assets for loading
 
 ## Installation using Docker
 
-To build this Dockerfile Docker 17.05 or higher is required.
+Note: Docker 17.05 or higher is required.
 
 ```bash
 git clone https://github.com/capriza/samling.git
