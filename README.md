@@ -26,7 +26,7 @@ Generating a SAML Response requires the use of a private key and certificate for
 SAMLING enables to generate a random private/public key and to save them in the local storage so they are used in
 subsequent SAML responses.
 
-## Installation
+## Installation using node
 
 ```bash
 git clone https://github.com/capriza/samling.git
@@ -36,6 +36,15 @@ npm run build
 ```
 
 You'll end up with a `public` directory with all the required assets for loading `samling.html`.
+
+## Installation using Docker
+
+```bash
+docker build -t capriza/samling .
+docker run -d -p 8080:80 capriza/samling
+```
+
+You can now access from your browser to `http://localhost:8080` to access the samling application.
 
 ## How to Use
 
