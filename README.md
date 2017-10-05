@@ -47,8 +47,7 @@ cd samling
 docker build -t capriza/samling .
 docker run -d -p 8080:80 capriza/samling
 ```
-
-You can now access from your browser to `http://localhost:8080` to access the samling application.
+You can now access samling at http://localhost:8080
 
 ## How to Use
 
