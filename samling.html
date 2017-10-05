@@ -92,6 +92,12 @@
                 <input type="text" class="form-control" id="samlStatusMessage">
               </div>
 
+              <div class="form-group">
+                  <label class="control-label" for="samlAttributes">SAML Attributes</label>
+                  <small class="form-text text-muted">place each attribute on a separate line</small>
+                  <textarea class="form-control" rows="3" id="samlAttributes" placeholder="attr1=value1&#10;attr2=value2"></textarea>
+              </div>
+
               <div class="row">
                 <div class="form-group col-md-6" id="signatureKeyControl">
                   <label class="control-label" for="signatureKey">
@@ -131,7 +137,7 @@
                 <dd>Generate a new random private/public key pair.</dd>
                 <dt>Save</dt>
                 <dd>Save the private key and certificate to the local storage.</dd>
-                <dt>Create Response</dt>
+                <dt>Next</dt>
                 <dd>Create the SAML Response based on the provided properties.
                   You will be transferred to the <b>SAML Response</b> section.
                 </dd>
