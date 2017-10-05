@@ -204,7 +204,8 @@ $(function() {
       issuer: $('#issuer').val().trim(),
       authnContextClassRef: $('#authnContextClassRef').val().trim(),
       nameIdentifierFormat: $('#nameIdentifierFormat').val().trim(),
-      nameIdentifier: $('#nameIdentifier').val().trim()
+      nameIdentifier: $('#nameIdentifier').val().trim(),
+      sessionIndex: ('_samling_' + (Math.random() * 10000000)).replace('.', '_')
     };
     var assertion = window.SAML.createAssertion(options);
     var callbackUrl = $('#callbackUrl').val().trim();
