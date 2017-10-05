@@ -10,8 +10,6 @@ RUN npm install
 
 COPY . /usr/src/app/
 RUN npm run build && npm cache clean --force
-COPY . /usr/src/app
-RUN npm build
 
 ## Server
 FROM nginx:1.13.5-alpine
