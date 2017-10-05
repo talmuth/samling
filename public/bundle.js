@@ -37860,13 +37860,24 @@ $(function() {
       return;
     }
 
+    var attributes = {};
+    var attributesStr = $('#samlAttributes').val().trim();
+    attributesStr.split('\n').forEach(function(line) {
+      var line = line.trim().split('=');
+      if (line.length >= 1) {
+        attributes[line[0]] = line[1] || '';
+      }
+    });
+
     var options = {
       key: $('#signatureKey').val().trim(),
       cert: $('#signatureCert').val().trim(),
       issuer: $('#issuer').val().trim(),
       authnContextClassRef: $('#authnContextClassRef').val().trim(),
       nameIdentifierFormat: $('#nameIdentifierFormat').val().trim(),
-      nameIdentifier: $('#nameIdentifier').val().trim()
+      nameIdentifier: $('#nameIdentifier').val().trim(),
+      sessionIndex: ('_samling_' + (Math.random() * 10000000)).replace('.', '_'),
+      attributes: attributes
     };
     var assertion = window.SAML.createAssertion(options);
     var callbackUrl = $('#callbackUrl').val().trim();
