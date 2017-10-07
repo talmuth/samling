@@ -200,7 +200,7 @@ $(function() {
 
     var attributes = undefined;
     var attributesStr = $('#samlAttributes').val().trim();
-    if (attributesStr.length >= 0) {
+    if (attributesStr.length > 0) {
       attributes = {};
       attributesStr.split('\n').forEach(function(line) {
         var line = line.split('=');
