@@ -301,7 +301,7 @@ $(function() {
     if (end === -1) {
       end = undefined;
     }
-    handleRequest(location.search.substr(13, end));
+    handleRequest(location.search.substring(13, end));
   }
 
 });
