@@ -37591,7 +37591,7 @@ exports.createAssertion = function(options) {
         statement.appendChild(attributeElement);
       }
     });
-    doc.appendChild(statement);
+    doc.documentElement.appendChild(statement);
   }
 
   doc.getElementsByTagName('saml:AuthnStatement')[0].setAttribute('AuthnInstant', now);
