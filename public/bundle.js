@@ -37680,7 +37680,7 @@ function logout(info) {
   }
 }
 
-function handleRequest(request) {
+function handleRequest(request, relayState) {
   // parse the saml request
   window.SAML.parseRequest({issuer: $('#issuer').val().trim(), callbackUrl: $('#callbackUrl').val().trim()}, request, function(info) {
     if (info.logout) {
@@ -37693,6 +37693,7 @@ function handleRequest(request) {
     $('#nameIdentifierFormat').val(info.login.nameIdentifierFormat);
     $('#callbackUrl').val(info.login.callbackUrl);
     $('#issuer').val(info.login.destination);
+    $('#relayState').val(relayState);
 
     // auto-login if we also have the username already populated because of the samling cookie
     if ($('#signedInUser').text().trim().length > 0) {
@@ -37958,12 +37959,17 @@ $(function() {
     form.submit();
   });
 
-  if (location.search.indexOf('?SAMLRequest=') === 0) {
-    var end = location.search.indexOf('&');
-    if (end === -1) {
-      end = undefined;
+  if (location.search.indexOf('SAMLRequest=') !== -1) {
+    var params = location.search.split('?');
+    if (params.length > 1) {
+      var params = params[1].split('&');
+      var query = {};
+      params.forEach(function(part) {
+        var keyval = part.split('=');
+        query[keyval[0]] = keyval[1];
+      });
+      handleRequest(query['SAMLRequest'], query['RelayState']);
     }
-    handleRequest(location.search.substring(13, end));
   }
 
 });
