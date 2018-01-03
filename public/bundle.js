@@ -37693,7 +37693,7 @@ function handleRequest(request, relayState) {
     $('#nameIdentifierFormat').val(info.login.nameIdentifierFormat);
     $('#callbackUrl').val(info.login.callbackUrl);
     $('#issuer').val(info.login.destination);
-    $('#relayState').val(relayState);
+    $('#relayState').val(decodeURIComponent(relayState));
 
     // auto-login if we also have the username already populated because of the samling cookie
     if ($('#signedInUser').text().trim().length > 0) {
