@@ -200,8 +200,8 @@ exports.createResponse = function(options) {
   if (options.inResponseTo) {
     response += ' InResponseTo="' + options.inResponseTo + '"';
   }
-  if (options.callbackUrl) {
-    response += ' Destination="' + options.callbackUrl + '"';
+  if (options.destination) {
+    response += ' Destination="' + options.destination + '"';
   }
   response += '><saml:Issuer>' + options.issuer + '</saml:Issuer>';
   response += '<samlp:Status><samlp:StatusCode Value="' + options.samlStatusCode + '"/>';
