@@ -223,6 +223,7 @@ $(function() {
       sessionIndex: ('_samling_' + (Math.random() * 10000000)).replace('.', '_'),
       lifetimeInSeconds: $('#lifetime').val().trim(),
       recipient: destination,
+      audiences: [''],
       attributes: attributes
     };
     var assertion = window.SAML.createAssertion(options);
