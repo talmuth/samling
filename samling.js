@@ -224,12 +224,12 @@ $(function() {
     };
     var assertion = window.SAML.createAssertion(options);
     var callbackUrl = $('#callbackUrl').val().trim();
-    var destinationUrl = $('#destinationUrl').val().trim();
     var response = window.SAML.createResponse({
       instant: new Date().toISOString().trim(),
       issuer: $('#issuer').val().trim(),
       callback: callbackUrl,
-      destination: destinationUrl,
+      destination: $('#destinationUrl').val().trim(),
+      lifetimeInSeconds: $('#lifetime').val().trim(),
       assertion: assertion,
       samlStatusCode: $('#samlStatusCode').val().trim(),
       samlStatusMessage: $('#samlStatusMessage').val().trim()
