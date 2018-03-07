@@ -40118,14 +40118,16 @@ $(function() {
     };
     var assertion = window.SAML.createAssertion(options);
     var callbackUrl = $('#callbackUrl').val().trim();
+    var destination = $('#destinationUrl').val().trim();
     var response = window.SAML.createResponse({
       instant: new Date().toISOString().trim(),
       issuer: $('#issuer').val().trim(),
       callback: callbackUrl,
-      destination: $('#destinationUrl').val().trim(),
+      destination: destination,
       assertion: assertion,
       samlStatusCode: $('#samlStatusCode').val().trim(),
-      samlStatusMessage: $('#samlStatusMessage').val().trim()
+      samlStatusMessage: $('#samlStatusMessage').val().trim(),
+      recipient: destination
     });
     $('#samlResponse').val(response);
     $('#callbackUrlReadOnly').val(callbackUrl);
