@@ -220,16 +220,16 @@ $(function() {
       nameIdentifierFormat: $('#nameIdentifierFormat').val().trim(),
       nameIdentifier: $('#nameIdentifier').val().trim(),
       sessionIndex: ('_samling_' + (Math.random() * 10000000)).replace('.', '_'),
+      lifetimeInSeconds: $('#lifetime').val().trim(),
       attributes: attributes
     };
     var assertion = window.SAML.createAssertion(options);
     var callbackUrl = $('#callbackUrl').val().trim();
-    var destinationUrl = $('#destinationUrl').val().trim();
     var response = window.SAML.createResponse({
       instant: new Date().toISOString().trim(),
       issuer: $('#issuer').val().trim(),
       callback: callbackUrl,
-      destination: destinationUrl,
+      destination: $('#destinationUrl').val().trim(),
       assertion: assertion,
       samlStatusCode: $('#samlStatusCode').val().trim(),
       samlStatusMessage: $('#samlStatusMessage').val().trim()
