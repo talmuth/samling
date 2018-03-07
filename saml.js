@@ -102,6 +102,7 @@ exports.createAssertion = function(options) {
   doc.documentElement.setAttribute('IssueInstant', now);
   var conditions = doc.documentElement.getElementsByTagName('saml:Conditions');
   var confirmationData = doc.documentElement.getElementsByTagName('saml:SubjectConfirmationData');
+  confirmationData[0].setAttribute('Recipient', options.issuer);
 
   if (options.lifetimeInSeconds) {
     var expires = new Date(Date.now() + options.lifetimeInSeconds*1000).toISOString();
