@@ -220,6 +220,7 @@ $(function() {
       nameIdentifierFormat: $('#nameIdentifierFormat').val().trim(),
       nameIdentifier: $('#nameIdentifier').val().trim(),
       sessionIndex: ('_samling_' + (Math.random() * 10000000)).replace('.', '_'),
+      lifetimeInSeconds: $('#lifetime').val().trim(),
       attributes: attributes
     };
     var assertion = window.SAML.createAssertion(options);
@@ -229,7 +230,6 @@ $(function() {
       issuer: $('#issuer').val().trim(),
       callback: callbackUrl,
       destination: $('#destinationUrl').val().trim(),
-      lifetimeInSeconds: $('#lifetime').val().trim(),
       assertion: assertion,
       samlStatusCode: $('#samlStatusCode').val().trim(),
       samlStatusMessage: $('#samlStatusMessage').val().trim()
