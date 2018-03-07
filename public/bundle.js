@@ -39791,7 +39791,7 @@ exports.createAssertion = function(options) {
       element.textContent = audience;
       audienceRestrictionsElement.appendChild(element);
     });
-    conditions.appendChild(audienceRestrictionsElement);
+    conditions[0].appendChild(audienceRestrictionsElement);
   }
 
   if (options.recipient)
