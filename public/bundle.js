@@ -39775,7 +39775,6 @@ exports.createAssertion = function(options) {
   doc.documentElement.setAttribute('IssueInstant', now);
   var conditions = doc.documentElement.getElementsByTagName('saml:Conditions');
   var confirmationData = doc.documentElement.getElementsByTagName('saml:SubjectConfirmationData');
-  confirmationData[0].setAttribute('Recipient', options.issuer);
 
   if (options.lifetimeInSeconds) {
     var expires = new Date(Date.now() + options.lifetimeInSeconds*1000).toISOString();
@@ -40105,6 +40104,7 @@ $(function() {
       });
     }
 
+    var destination = $('#destinationUrl').val().trim();
     var options = {
       key: $('#signatureKey').val().trim(),
       cert: $('#signatureCert').val().trim(),
@@ -40114,11 +40114,11 @@ $(function() {
       nameIdentifier: $('#nameIdentifier').val().trim(),
       sessionIndex: ('_samling_' + (Math.random() * 10000000)).replace('.', '_'),
       lifetimeInSeconds: $('#lifetime').val().trim(),
+      recipient: destination,
       attributes: attributes
     };
     var assertion = window.SAML.createAssertion(options);
     var callbackUrl = $('#callbackUrl').val().trim();
-    var destination = $('#destinationUrl').val().trim();
     var response = window.SAML.createResponse({
       instant: new Date().toISOString().trim(),
       issuer: $('#issuer').val().trim(),
@@ -40127,7 +40127,6 @@ $(function() {
       assertion: assertion,
       samlStatusCode: $('#samlStatusCode').val().trim(),
       samlStatusMessage: $('#samlStatusMessage').val().trim(),
-      recipient: destination
     });
     $('#samlResponse').val(response);
     $('#callbackUrlReadOnly').val(callbackUrl);
